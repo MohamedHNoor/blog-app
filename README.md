@@ -30,7 +30,7 @@
 
 # Blog App <a name="about-project"></a>
 
-**Blog App** is classic blog app that allows users to create posts and add comments to them. It also allows users to like posts. It is built using Ruby on Rails.
+**Blog App** is a simple blog website where users can create posts, add comments to posts and like posts. This project is built using Ruby on Rails.
 
 ## 🛠 Built With <a name="built-with"></a>
 
