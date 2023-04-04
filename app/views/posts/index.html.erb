@@ -1,2 +1,40 @@
-<h1>List of posts in index method</h1>
+<h1>List of posts for a given user</h1>
+
+<div>
+  <div>
+    <img src="#{@user.photo}" alt="user image">
+  </div>
+
+  <div>
+    <h2><%= @user.name %></h2>
+    <p>Number of Posts: <%= @user.posts_counter%></p>
+  </div>
+</div>
+
+<section>
+  <% @posts.each do |post| %>
+    <a href=<%= "/users/#{@user.id}/posts/#{post.id}" %>>
+      <div>
+        <h3><%= post.title %></h3>
+        <p><%= post.text %></p>
+
+        <div>
+          <span>Comments: <%= "#{post.comments_counter || 0 }"%></span>
+          <span>Likes: <%= "#{post.likes_counter || 0 }"%></span>
+        </div>
+      </div>
+    </a>
+
+    <div>
+      <%= post.most_recent_comments.each do |comment| %>
+        <p>
+          <%= "#{comment.author.name}: #{comment.text}" %>
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+</section>
+
+
+
 
