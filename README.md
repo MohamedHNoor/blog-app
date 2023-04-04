@@ -18,6 +18,7 @@
     - [Setup](#setup)
     - [Install](#install)
     - [Usage](#usage)
+    - [Run tests](#run-tests)
   - [👥 Authors ](#-authors-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
@@ -92,6 +93,10 @@ To run the project, execute the following command:
 - Run `rails db:create` to create a new database
 - Run `rails db:migrate` to migrate the db and build the schema
 - Run `rails s` to start the server
+
+### Run tests
+
+- Run `bundle exec rspec` to run the tests
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
