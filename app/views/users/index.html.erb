@@ -1,2 +1,15 @@
-<h1>List of users in index method</h1>
+<h1>List of users</h1>
 
+<section>
+  <% @users.each do |user| %>
+    <div>
+      <img src="<%= user.photo %>" alt="user image"/>
+    </div>
+    <div>
+      <a href= <%= "/users/#{user.id}"%> >
+        <h2> <%= user.name %></h2>
+        <span> Number of posts: <%= user.posts_counter%></span>
+      </a>
+    </div>
+  <% end %>
+</section>

@@ -1,1 +1,33 @@
-<h1>Single user in show method</h1>
+<h1>Single user</h1>
+
+<div>
+  <div>
+    <img src="<%= @user.photo %>" alt="user photo">
+  </div>
+  <div>
+    <h2> <%= @user.name %></h2>
+    <p>Number of posts: <%= @user.posts_counter %></p>
+  </div>
+</div>
+
+<div>
+  <h2>Bio</h2>
+  <p><%= @user.bio %></p>
+</div>
+
+<div>
+  <% @user.most_recent_posts.each do |post| %>
+    <a href=<%= "users/#{@user.id}/posts/#{post.id}" %> >
+      <h2>Post #<%= post.id %></h2>
+      <p><%= post.text %></p>
+
+      <div>
+        <span>Comments: <%= "#{post.comments_counter || 0 }"%></span>
+        <span>Likes: <%= "#{post.likes_counter || 0 }"%></span>
+      </div>
+    </a>
+  <% end %> 
+  <a href=<%= "/users/#{@user.id}/posts"%>>
+    See All Posts
+  </a>
+</div>
