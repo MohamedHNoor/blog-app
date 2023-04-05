@@ -9,14 +9,18 @@
 first_user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
 second_user = User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.')
 
-first_post = Post.create(author: first_user, title: 'Hello from first_user', text: 'This is my first post from Tom')
-second_post = Post.create(author: second_user, title: 'Hello from second_user', text: 'This is my first post from Lilly')
-third_post = Post.create(author: first_user, title: 'Hello first_user again', text: 'This is my second post from Tom')
-fourth_post = Post.create(author: second_user, title: 'Hello from second_user again', text: 'This is my second post from Lilly')
+first_post = Post.create(author: first_user, title: 'Tom Post #1', text: "This is Tom's first post")
+second_post = Post.create(author: second_user, title: 'Lilly Post #1', text: "This is Lilly's first post")
+third_post = Post.create(author: first_user, title: 'Tom Post #2', text: "This is Tom's second post")
+fourth_post = Post.create(author: second_user, title: 'Lilly Post #2', text: "This is Lilly's second post")
 
-first_comment = Comment.create(author: first_user, post: first_post, text: 'This is my first comment from Tom')
-second_comment = Comment.create(author: second_user, post: second_post, text: 'This is my second comment from Lilly')
-third_comment = Comment.create(author: first_user, post: third_post, text: 'This is my third comment from Tom')
-fourth_comment = Comment.create(author: second_user, post: fourth_post, text: 'This is my fourth comment from Lilly')
-fitth_comment = Comment.create(author: first_user, post: first_post, text: 'This is my fifth comment from Tom')
-sixth_comment = Comment.create(author: second_user, post: second_post, text: 'This is my sixth comment from Lilly')
+Comment.create(post: first_post, author: first_user, text: 'First comment for Tom' )
+Comment.create(post: second_post, author: second_user, text: 'Second comment for Lilly' )
+Comment.create(post: third_post, author: first_user, text: 'First comment for Tom' )
+Comment.create(post: fourth_post, author: second_user, text: 'Second comment for Lilly' )
+
+Like.create(post: first_post, author: first_user)
+Like.create(post: second_post, author: second_user)
+Like.create(post: third_post, author: first_user)
+Like.create(post: fourth_post, author: second_user)
+

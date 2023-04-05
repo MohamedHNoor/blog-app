@@ -1,2 +1,41 @@
-<h1>List of posts in index method</h1>
+<h1>List of posts for a given user</h1>
+
+<div class="d-flex align-items-center mb-3 gap-3 text-secondary-emphasis w-100">
+  <div>
+    <img src="<%= @user.photo %>" alt="user photo" class= "border border-5 p-5">
+  </div>
+  <div class=" border border-5 w-100 p-3">
+    <h2 class="flex-grow-1 p-2"> <%= @user.name %></h2>
+    <div class="d-flex justify-content-end">
+      <p>Number of posts: <%= @user.posts_counter %></p>
+    </div>
+  </div>
+</div>
+
+<section>
+  <% @user.most_recent_posts.each_with_index do |post, index| %>
+    <a href=<%= "/users/#{@user.id}/posts/#{post.id}" %> class="text-decoration-none text-secondary-emphasis">
+      <div class="border border-5 mx-auto w-100 p-3 mb-3">
+        <h3>Post #<%= index + 1 %></h3>
+        <p><%= post.text %></p>
+
+        <div class="d-flex justify-content-end">
+          <span>Comments: <%= "#{post.comments_counter || 0 }"%></span>
+          <span>, Likes: <%= "#{post.likes_counter || 0 }"%></span>
+        </div>
+      </div>
+    </a>
+
+    <div class="border border-5 mx-auto w-100 p-3 mb-3">
+      <% post.most_recent_comments.each_with_index do |comment, index| %>
+          <span><%= comment.author.name %>:</span>
+          <span> <%= comment.text %></span>
+      <% end %>
+    </div>
+    
+  <% end %>
+</section>
+
+
+
 

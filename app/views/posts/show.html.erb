@@ -1,2 +1,26 @@
-<h1>Single post in show method</h1>
+<h1 class="mb-3">Single post to a given user</h1>
+
+<section>
+  <div class="border border-5 mx-auto w-100 p-3 mb-3">
+    <div class="d-flex justify-content-between align-items-center p3">
+      <h2>
+      Post #<%= @post.id %> by <%= @user.name %>
+      </h2>
+      <div>
+        <span>Comments: <%= @post.comments_counter %></span>
+        <span>, Likes: <%= @post.likes_counter %></span>
+      </div>
+    </div>
+
+    <div>
+      <p> <%= @post.text %></p>
+    </div>
+  </div>
+
+  <div class="border border-5 mx-auto w-100 p-3 mb-3">
+    <% @post.most_recent_comments.each_with_index do |comment| %>
+      <p><%= "#{comment.author.name}: #{comment.text}" %></p>
+    <% end %>
+  </div>
+</section>
 
