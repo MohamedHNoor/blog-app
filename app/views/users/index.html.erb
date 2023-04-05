@@ -1,15 +1,16 @@
-<h1>List of users</h1>
+<h1 class=" mb-3">List of users</h1>
 
-<section>
-  <% @users.each do |user| %>
-    <div>
-      <img src="<%= user.photo %>" alt="user image"/>
-    </div>
-    <div>
-      <a href= <%= "/users/#{user.id}"%> >
-        <h2> <%= user.name %></h2>
-        <span> Number of posts: <%= user.posts_counter%></span>
-      </a>
-    </div>
-  <% end %>
+<section class="w-100">
+    <% @users.each do |user| %>        
+          <a href= <%= "users/#{user.id}"%> class="d-flex align-items-center mb-3 gap-3 text-secondary-emphasis text-decoration-none">
+          <%= image_tag(user.photo, class: "border p-5 border-5")%>
+          <div class="border border-5 w-100  p-3">
+            <h2 class="flex-grow-1"> <%= user.name %></h2>
+            <div class="d-flex justify-content-end">
+              Number of posts:
+              <%= user.posts_counter || 0 %>
+            </div>
+            </div>
+          </a> 
+    <% end %>
 </section>

@@ -2,12 +2,13 @@
 
 <div>
   <div>
-    <img src="#{@user.photo}" alt="user image">
-  </div>
-
-  <div>
-    <h2><%= @user.name %></h2>
-    <p>Number of Posts: <%= @user.posts_counter%></p>
+    <%= image_tag(@user.photo) %>
+    <div>
+      <h2><%= @user.name %></h2>
+      <div>
+        <p>Number of Posts: <%= @user.posts_counter%></p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -26,10 +27,14 @@
     </a>
 
     <div>
-      <%= post.most_recent_comments.each do |comment| %>
-        <p>
-          <%= "#{comment.author.name}: #{comment.text}" %>
-        </p>
+      <%= post.most_recent_comments.each_with_index do |comment, index| %>
+        <div>
+        <h2>Post #<%= index + 1 %></h2>
+        <h4>
+          <%= comment.author.name %>
+        </h4>
+        <p><%= comment.text %></p>
+        </div>
       <% end %>
     </div>
   <% end %>

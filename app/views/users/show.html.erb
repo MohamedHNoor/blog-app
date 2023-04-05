@@ -1,33 +1,35 @@
-<h1>Single user</h1>
+<h1 class="text-seondary mb-5">Single user</h1>
 
-<div>
+<div class="d-flex align-items-center mb-3 gap-3 text-secondary-emphasis w-100">
   <div>
-    <img src="<%= @user.photo %>" alt="user photo">
+    <img src="<%= @user.photo %>" alt="user photo" class= "border border-5 p-5">
   </div>
-  <div>
-    <h2> <%= @user.name %></h2>
-    <p>Number of posts: <%= @user.posts_counter %></p>
+  <div class=" border border-5 w-100 p-3">
+    <h2 class="flex-grow-1 p-2"> <%= @user.name %></h2>
+    <div class="d-flex justify-content-end">
+      <p>Number of posts: <%= @user.posts_counter %></p>
+    </div>
   </div>
 </div>
 
-<div>
+<div class="border border-5 mx-auto w-100 p-3 mb-3">
   <h2>Bio</h2>
   <p><%= @user.bio %></p>
 </div>
 
 <div>
   <% @user.most_recent_posts.each do |post| %>
-    <a href=<%= "users/#{@user.id}/posts/#{post.id}" %> >
+    <div class="border border-5 mx-auto w-100 p-3 mb-3">
       <h2>Post #<%= post.id %></h2>
       <p><%= post.text %></p>
 
-      <div>
-        <span>Comments: <%= "#{post.comments_counter || 0 }"%></span>
-        <span>Likes: <%= "#{post.likes_counter || 0 }"%></span>
+      <div class="d-flex justify-content-end">
+        <span>Comments: <%= "#{post.comments_counter || 0 }, "%></span>
+        <span>Likes: <%= "#{ post.likes_counter || 0 }"%></span>
       </div>
-    </a>
+    </div>
   <% end %> 
-  <a href=<%= "/users/#{@user.id}/posts"%>>
+  <a href=<%= "/users/#{@user.id}/posts"%> class="btn btn-outline-secondary">
     See All Posts
   </a>
 </div>

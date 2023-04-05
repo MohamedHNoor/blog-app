@@ -16,10 +16,15 @@
   </div>
 
   <div>
-    <% @post.comments.each do |comment| %>
-      <p>
-        <%= "#{comment.author.name}: #{comment.text}" %>
-      </p>
+    <% @post.most_recent_comments.each_with_index do |comment| %>
+      <div>
+        <h4>
+          <%= comment.author.name %>:
+        </h4>
+        <p>
+          <%= comment.text %>
+        </p>
+      </div>
     <% end %>
   </div>
 </section>
