@@ -13,28 +13,42 @@
 </div>
 
 <section>
-  <% @user.most_recent_posts.each_with_index do |post, index| %>
-    <a href=<%= "/users/#{@user.id}/posts/#{post.id}" %> class="text-decoration-none text-secondary-emphasis">
+  <% @user.most_recent_posts.each do |post| %>
       <div class="border border-5 mx-auto w-100 p-3 mb-3">
-        <h3>Post #<%= index + 1 %></h3>
+        <h3><%= link_to post.title, "/users/#{@user.id}/posts/#{post.id}" %></h3>
         <p><%= post.text %></p>
 
-        <div class="d-flex justify-content-end">
-          <span>Comments: <%= "#{post.comments_counter || 0 }"%></span>
+        <div class="d-flex justify-content-between">
+          <div>
+            <%= form_with url: "/likes/#{post.id}" do |form| %>
+              <%= form.submit "Like", class: "btn btn-outline-secondary"%>
+            <% end %>
+          </div>
+
+          <div>
+            <span>Comments: <%= "#{post.comments_counter || 0 }"%></span>
           <span>, Likes: <%= "#{post.likes_counter || 0 }"%></span>
+          </div>
+
         </div>
       </div>
-    </a>
 
     <div class="border border-5 mx-auto w-100 p-3 mb-3">
-      <% post.most_recent_comments.each_with_index do |comment, index| %>
+      <h4 class="mb-3">Comments</h4>
+      <% post.most_recent_comments.each do |comment| %>
+        <div class="mb-3">
           <span><%= comment.author.name %>:</span>
           <span> <%= comment.text %></span>
+        </div>  
       <% end %>
     </div>
     
   <% end %>
 </section>
+
+<div class="text-center mb-3">
+  <a href="/posts/new" class="btn btn-outline-secondary">Create new post</a>
+</div>
 
 
 
