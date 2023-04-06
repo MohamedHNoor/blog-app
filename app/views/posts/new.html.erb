@@ -1,0 +1,16 @@
+<h1>Create new post</h1>
+
+<%= form_with model: @post do |form| %>
+
+  <div class="mb-3">
+    <%= form.label :Title, class: "form-label" %>
+    <%= form.text_field :title, placeholder: "post title", class: "form-control"  %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :text, class: "form-label" %>
+    <%= form.text_area :text, placeholder: "post text...", class: "form-control form-control-lg" %>
+  </div>
+  <div>
+    <%= form.submit "Create Post", class: "btn btn-outline-secondary" %>
+  </div>
+<% end %>
