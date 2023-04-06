@@ -18,9 +18,15 @@
   </div>
 
   <div class="border border-5 mx-auto w-100 p-3 mb-3">
-    <% @post.most_recent_comments.each_with_index do |comment| %>
+  <% if @post.most_recent_comments.length > 0 %>
+    <% @post.most_recent_comments.each do |comment| %>
       <p><%= "#{comment.author.name}: #{comment.text}" %></p>
     <% end %>
+  <% else %>
+    <p>
+      No comments yet
+    </p>
+  <% end %>
   </div>
 </section>
 
