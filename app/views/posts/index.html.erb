@@ -34,24 +34,12 @@
       </div>
 
     <div class="border border-5 mx-auto w-100 p-3 mb-3">
-    <% if post.most_recent_comments.length > 0 %>
+      <h4 class="mb-3">Comments</h4>
       <% post.most_recent_comments.each do |comment| %>
+        <div class="mb-3">
           <span><%= comment.author.name %>:</span>
           <span> <%= comment.text %></span>
-      <% end %>
-      <% else %> 
-        <p>
-          No comments yet
-        </p>
-      <% end %>
-    </div>
-
-    <div>
-      <%= form_with url: "/comments/#{post.id}" do |form| %>
-        <div>
-          <%= form.text_area :text, placeholder: "Add comment", class: "form-control"%>
-        </div>
-        <%= form.submit "Add Comment", class: "btn btn-outline-secondary m-2" %>
+        </div>  
       <% end %>
     </div>
     
