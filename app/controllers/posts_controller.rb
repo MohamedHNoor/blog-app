@@ -1,12 +1,14 @@
 class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts
+    # @posts = @user.posts
   end
 
   def show
     @user = User.find(params[:user_id])
     @post = Post.find(params[:id])
+    @comment = Comment.new
+    @like = Like.new
   end
 
   def new
@@ -14,14 +16,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.new(post_params)
-    if @post.save
-      flash[:success] = 'Post created!'
-      redirect_to "/users/#{current_user.id}/posts"
-    else
-      flash[:danger] = 'Post not created!'
-      render :new, status: :unprocessable_entity
-    end
+    @post = Post.new(post_params)
+    @post.author = current_user
+    @post.likes_counter = 0
+    @post.comments_counter = 0
+    return unless @post.save
+
+    redirect_to user_posts_path
+    flash[:success] = 'Post created!'
   end
 
   private

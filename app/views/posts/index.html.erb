@@ -2,9 +2,9 @@
 
 <div class="d-flex align-items-center mb-3 gap-3 text-secondary-emphasis w-100">
   <div>
-    <img src="<%= @user.photo %>" alt="user photo" class= "border border-5 p-5">
+    <img src="<%= @user.photo %>" alt="user photo" class= "border border-5 profile-image">
   </div>
-  <div class=" border border-5 w-100 p-3">
+  <div class=" border border-5 w-100 p-1">
     <h2 class="flex-grow-1 p-2"> <%= @user.name %></h2>
     <div class="d-flex justify-content-end">
       <p>Number of posts: <%= @user.posts_counter %></p>
@@ -15,12 +15,12 @@
 <section>
   <% @user.most_recent_posts.each do |post| %>
       <div class="border border-5 mx-auto w-100 p-3 mb-3">
-        <h3><%= link_to post.title, "/users/#{@user.id}/posts/#{post.id}" %></h3>
+        <h3><%= link_to post.title, user_post_path(@user, post) %></h3>
         <p><%= post.text %></p>
 
         <div class="d-flex justify-content-between">
           <div>
-            <%= form_with url: "/likes/#{post.id}" do |form| %>
+            <%= form_with model: @like, url: user_post_likes_path(post_id: post.id) do |form| %>
               <%= form.submit "Like", class: "btn btn-outline-secondary"%>
             <% end %>
           </div>
@@ -37,7 +37,7 @@
       <h4 class="mb-3">Comments</h4>
       <% post.most_recent_comments.each do |comment| %>
         <div class="mb-3">
-          <span><%= comment.author.name %>:</span>
+          <span><strong><%= comment.author.name %></strong>:</span>
           <span> <%= comment.text %></span>
         </div>  
       <% end %>
@@ -47,7 +47,7 @@
 </section>
 
 <div class="text-center mb-3">
-  <a href="/posts/new" class="btn btn-outline-secondary">Create new post</a>
+<%= link_to "Create new post", new_user_post_path, class: "btn btn-outline-secondary" %>
 </div>
 
 
