@@ -54,5 +54,4 @@ RSpec.describe 'posts/index', type: :feature do
     click_on @first_post.title
     expect(page).to have_content(@first_post.title)
   end
-
 end
