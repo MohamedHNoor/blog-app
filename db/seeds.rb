@@ -6,22 +6,84 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-first_user = User.create(name: 'Tom', photo: 'https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2022/10/Andor_Luthen-Rael.png?fit=2554,1642&quality=60&strip=all&ssl=1')
-second_user = User.create(name: 'Lilly', photo: 'https://lumiere-a.akamaihd.net/v1/images/bix-caleen-main-b_1450fe71.jpeg?region=103%2C0%2C1427%2C803&width=960', bio: 'Teacher from Poland.')
+User.destroy_all
+Post.destroy_all 
+Comment.destroy_all
 
-first_post = Post.create(author: first_user, title: 'Tom Post #1', text: "This is Tom's first post")
-second_post = Post.create(author: second_user, title: 'Lilly Post #1', text: "This is Lilly's first post")
-third_post = Post.create(author: first_user, title: 'Tom Post #2', text: "This is Tom's second post")
-fourth_post = Post.create(author: second_user, title: 'Lilly Post #2', text: "This is Lilly's second post")
+user1 = User.create!(
+  name: "Tom",
+  photo: "https://picsum.photos/200/300",
+  bio: "This is user 1 bio",
+  email: "hello1@gmail.com",
+  password: "password1"
+)
 
-Comment.create(post: first_post, author: first_user, text: 'First comment for Tom' )
-Comment.create(post: second_post, author: second_user, text: 'Second comment for Lilly' )
-Comment.create(post: third_post, author: first_user, text: 'First comment for Tom' )
-Comment.create(post: fourth_post, author: second_user, text: 'Second comment for Lilly' )
+user2 = User.create!(
+  name: "Lilly",
+  photo: "https://picsum.photos/200/300",
+  bio: "This is user 2 bio",
+  email: "hello2@gmail.com",
+  password: "password2"
+)
 
-Like.create(post: first_post, author: first_user)
-Like.create(post: second_post, author: second_user)
-Like.create(post: third_post, author: first_user)
-Like.create(post: fourth_post, author: second_user)
+user3 = User.create!(
+  name: "John",
+  photo: "https://picsum.photos/200/300",
+  bio: "This is user 3 bio",
+  email: "hello3@gmail.com",
+  password: "password3"
+)
+
+post1 = Post.create!(
+  title: "Post 1",
+  text: "This is post 1 content",
+  author: user1
+)
+
+post2 = Post.create!(
+  title: "Post 2",
+  text: "This is post 2 content",
+  author: user2
+)
+
+post3 = Post.create!(
+  title: "Post 3",
+  text: "This is post 3 content",
+  author: user3
+)
+
+comment1 = Comment.create!(
+  text: "This is comment 1",
+  author: user1,
+  post: post1
+)
+
+comment2 = Comment.create!(
+  text: "This is comment 2",
+  author: user2,
+  post: post2
+)
+
+comment3 = Comment.create!(
+  text: "This is comment 3",
+  author: user3,
+  post: post3
+)
+
+like1 = Like.create!(
+  author: user1,
+  post: post1
+)
+
+like2 = Like.create!(
+  author: user2,
+  post: post2
+)
+
+like3 = Like.create!(
+  author: user3,
+  post: post3
+)
+
 
 
