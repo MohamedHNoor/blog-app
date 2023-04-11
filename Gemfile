@@ -77,4 +77,4 @@ group :test do
   gem 'webdrivers'
 end
 
-gem "webrick", "~> 1.8"
+gem 'webrick', '~> 1.8'
