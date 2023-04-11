@@ -110,6 +110,12 @@ To run the project, execute the following command:
 - Twitter: [@MohamedHNoor](https://twitter.com/MohamedHNoor)
 - LinkedIn: [@MohamedHNoor](https://www.linkedin.com/in/mohamedhnoor/)
 
+👤 **Christian Ani**
+
+- GitHub: [@iamchristianani](https://github.com/iamchristianani)
+- Twitter: [@kriznode](https://twitter.com/kriznode)
+- LinkedIn: [Christian Ani](https://www.linkedin.com/in/anikriz/)
+
 <p align="right"><a href="#readme-top">back to top</a></p>
 
 <!-- FUTURE FEATURES -->
