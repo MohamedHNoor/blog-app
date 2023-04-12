@@ -47,7 +47,9 @@
 </section>
 
 <div class="text-center mb-3">
-<%= link_to "Create new post", new_user_post_path, class: "btn btn-outline-secondary" %>
+  <% if @user.id == current_user.id %>
+    <%= link_to "Create new post", new_user_post_path, class: "btn btn-outline-secondary" %>
+  <% end %>
 </div>
 
 

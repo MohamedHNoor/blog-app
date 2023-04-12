@@ -15,7 +15,13 @@
     <div>
       <p> <%= @post.text %></p>
     </div>
+    <div>
+      <% if @user.id == current_user.id %>
+      <%= button_to "Delete Post", user_post_path, method: :delete, class: "btn btn-outline-secondary" %>
+      <% end %>
   </div>
+  </div>
+  
 
   <div class="border border-5 p-3">
     <h3>Comments:</h3>
@@ -24,6 +30,9 @@
       <span><strong><%= comment.author.name %></strong>:</span>
       <span><%= comment.text %></span>
       </div>
+      <% if @user.id == current_user.id %>
+      <%= button_to "Delete Comment", user_post_comment_path(@user, @post, comment), method: :delete, class: "btn btn-outline-secondary" %>
+      <% end %>
     <% end %>
   </div>
 
