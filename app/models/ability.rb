@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -8,12 +6,12 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.role == 'admin'
       can :manage, :all
-    else 
+    else
       can :manage, Post, author_id: user.id
       can :manage, Comment, author_id: user.id
       can :read, :all
     end
-    
+
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
