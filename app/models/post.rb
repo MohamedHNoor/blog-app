@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   validates :title, presence: true, length: { maximum: 250 }
 
   after_save :update_post_counter
+  after_destroy :update_post_counter
 
   def update_post_counter
     author.update(posts_counter: author.posts.count)
