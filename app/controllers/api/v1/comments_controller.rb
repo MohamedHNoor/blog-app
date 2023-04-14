@@ -2,7 +2,7 @@ require 'jwt'
 
 class Api::V1::CommentsController < Api::V1::ApplicationController
   load_and_authorize_resource
-  before_action :find_post_params, only: [:index, :create]
+  before_action :find_post_params, only: %i[index create]
 
   def index
     if @post
